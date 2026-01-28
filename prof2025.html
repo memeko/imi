@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчет по профориентации ИМИ: 1 Семестр 2025/2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome (for icons, replacing SVGs) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuration for Tailwind (Palette) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1e3a8a',   /* Deep Blue */
+                            primary: '#3b82f6', /* Bright Blue */
+                            accent: '#f97316',  /* Vibrant Orange */
+                            teal: '#14b8a6',    /* Teal */
+                            light: '#f3f4f6'    /* Light Gray */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        /* Chart Container Styling - Mandatory Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Constraint handled by grid/parent */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Standard height */
+            max-height: 400px;
+        }
+
+        .chart-container-lg {
+             height: 400px;
+             max-height: 500px;
+        }
+
+        /* Timeline CSS (No SVG) */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 4px solid #3b82f6;
+        }
+        .timeline-item:last-child {
+            border-left: 4px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.8rem; /* Center on border */
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #f97316;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        /* Card Hover Effects */
+        .info-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER / HERO -->
+    <header class="bg-brand-dark text-white p-8 shadow-lg">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Отчет по профориентации ИМИ</h1>
+                    <p class="text-brand-primary text-xl font-light">1-й семестр 2025-2026 уч. г.</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-sm opacity-75">Ответственный: Салахова А.А.</p>
+                    <p class="text-sm opacity-75">Дата: 28.01.2026</p>
+                </div>
+            </div>
+
+            <!-- KEY STATS CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <!-- Stat 1 -->
+                <div class="bg-white text-gray-800 rounded-lg p-6 shadow-md border-l-8 border-brand-accent info-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase">Всего мероприятий</p>
+                            <p class="text-5xl font-bold text-brand-dark">18</p>
+                        </div>
+                        <i class="fa-solid fa-calendar-check text-4xl text-brand-primary opacity-20"></i>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Выполнено по плану</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-white text-gray-800 rounded-lg p-6 shadow-md border-l-8 border-brand-primary info-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase">Охват обучающихся</p>
+                            <p class="text-5xl font-bold text-brand-dark">~615</p>
+                        </div>
+                        <i class="fa-solid fa-users text-4xl text-brand-primary opacity-20"></i>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Школьники 7-11 классов</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-white text-gray-800 rounded-lg p-6 shadow-md border-l-8 border-brand-teal info-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase">Школы-партнеры</p>
+                            <p class="text-5xl font-bold text-brand-dark">35+</p>
+                        </div>
+                        <i class="fa-solid fa-handshake text-4xl text-brand-primary opacity-20"></i>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">ИТ-классы, ИТ-вертикаль + mos.ru</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto p-6 space-y-12">
+
+        <!-- INTRO SECTION -->
+        <section>
+            <div class="bg-white rounded-xl shadow-md p-8">
+                <h2 class="text-2xl font-bold text-brand-dark mb-4 border-b-2 border-brand-accent inline-block pb-1">
+                    Обзор семестра
+                </h2>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    В первом семестре 2025/2026 учебного года профориентационная деятельность ИМИ вышла на новый уровень системности. Мы внедрили <strong>двухсезонную модель (осень и зима)</strong>, обеспечив непрерывность образовательного процесса. Ключевым достижением стала глубокая дифференциация: внутри каждого направления параллельно работают группы углубленного уровня («ИТ-классы») и предпрофильной подготовки («ИТ-вертикаль»). Параллельно запущена подготовка собственной LMS-платформы и открыт <strong>поток курсов с открытой записью через mos.ru</strong>, доступный каждому школьнику Москвы.
+                </p>
+            </div>
+        </section>
+
+        <!-- VISUALIZATION SECTION 1: ATTENDANCE & TYPES -->
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- BAR CHART: Top Events -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Топ-5 мероприятий</h3>
+                    <p class="text-sm text-gray-500 mb-6">
+                        Массовые мероприятия и олимпиады остаются основными точками входа. Городская математическая олимпиада и фестивали привлекают наибольшую аудиторию.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="topEventsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- DOUGHNUT CHART: Activity Structure -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Структура деятельности</h3>
+                    <p class="text-sm text-gray-500 mb-6">
+                        Акцент сделан на <strong>серии занятий</strong> (курсы) и олимпиады, что обеспечивает глубину погружения.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="activityTypeChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: TIMELINE -->
+        <section class="bg-white rounded-xl shadow-md p-8">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b-2 border-brand-accent inline-block pb-1">
+                Хронология ключевых событий
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline Items -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100">
+                        <span class="text-brand-accent font-bold text-sm">Июль 2025</span>
+                        <h4 class="font-bold text-lg text-gray-800">Большая Математическая Мастерская</h4>
+                        <p class="text-gray-600 text-sm">Выездной интенсив в Санкт-Петербурге.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100">
+                        <span class="text-brand-accent font-bold text-sm">Сентябрь 2025</span>
+                        <h4 class="font-bold text-lg text-gray-800">Старт потока "Осень"</h4>
+                        <p class="text-gray-600 text-sm">Запуск дифференцированных программ для ИТ-классов и ИТ-вертикали.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100">
+                        <span class="text-brand-accent font-bold text-sm">Октябрь 2025</span>
+                        <h4 class="font-bold text-lg text-gray-800">Фестивальный месяц</h4>
+                        <p class="text-gray-600 text-sm">Фестиваль ИМИ, Шахматный турнир, старт курсов "Геймдев" и "Боты".</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100">
+                        <span class="text-brand-accent font-bold text-sm">Ноябрь 2025</span>
+                        <h4 class="font-bold text-lg text-gray-800">Олимпиады и хакатоны</h4>
+                        <p class="text-gray-600 text-sm">XLVIII Городская мат. олимпиада, хакатон по программированию.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100">
+                        <span class="text-brand-accent font-bold text-sm">Декабрь 2025</span>
+                        <h4 class="font-bold text-lg text-gray-800">Старт потока "Зима"</h4>
+                        <p class="text-gray-600 text-sm">Новый сезон курсов, запуск олимпиады "Ордината", День открытых дверей.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LEADING PROJECT -->
+        <section>
+            <div class="bg-brand-dark text-white rounded-xl shadow-lg p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-brand-primary opacity-20 rounded-full"></div>
+
+                <h2 class="text-2xl font-bold mb-6 border-b-2 border-brand-accent inline-block pb-1">
+                    Ведущий проект: "Твой проф. выбор – новые технологии"
+                </h2>
+                <p class="text-gray-200 mb-8 max-w-3xl">
+                    Трансформация в <strong>кластерную систему</strong> позволила дифференцировать обучение и открыть доступ к курсам для всех школьников города.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Cards -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg border border-white border-opacity-20 transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-brand-accent text-3xl mb-4"><i class="fa-solid fa-calendar-days"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Два потока: Осень и Зима</h4>
+                        <div class="text-sm text-gray-300 space-y-2">
+                            <p>Внутри каждого направления параллельно работают группы:</p>
+                            <ul class="list-disc list-inside pl-2">
+                                <li><strong>ИТ-классы</strong> (10-11 кл.)</li>
+                                <li><strong>ИТ-вертикаль</strong> (7-9 кл.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg border border-white border-opacity-20 transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-brand-accent text-3xl mb-4"><i class="fa-solid fa-layer-group"></i></div>
+                        <h4 class="font-bold text-lg mb-2">6 направлений</h4>
+                        <p class="text-sm text-gray-300 mb-2">
+                            Серии занятий по трекам: ИИ, GameDev, Чат-боты, Мобильная разработка, Проектная деятельность и Микроэлектроника.
+                        </p>
+                        <p class="text-xs text-brand-teal font-semibold">
+                            <i class="fa-solid fa-rocket mr-1"></i> LMS платформа в разработке.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg border border-white border-opacity-20 transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-brand-accent text-3xl mb-4"><i class="fa-solid fa-globe"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Занятия для всех</h4>
+                        <p class="text-sm text-gray-300">
+                            Запись доступна <strong>любому школьнику Москвы</strong> через портал mos.ru, без привязки к партнерским договорам. Аналогично можно записаться на разовые мероприятия.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ANALYTICS DASHBOARD (NEW) -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-bold text-brand-dark mb-8 text-center">Аналитика и Эффективность</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Line Chart: Dynamics -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Динамика участия (по месяцам)</h3>
+                    <p class="text-sm text-gray-500 mb-6">
+                        Пик активности приходится на ноябрь (олимпиады) и декабрь (отчетные конференции и старты новых потоков).
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="dynamicsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Pie Chart: Audience -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Целевая аудитория</h3>
+                    <p class="text-sm text-gray-500 mb-6">
+                        Основную массу составляют учащиеся 7-9 классов ("ИТ-вертикаль"), что обеспечивает раннюю профориентацию.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="audienceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: STRATEGIC INSIGHTS -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-white rounded-xl shadow-md p-8 border-t-4 border-brand-teal">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-brand-teal bg-opacity-20 rounded-full flex items-center justify-center text-brand-teal text-xl mr-4">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark">Модель наставничества</h3>
+                </div>
+                <p class="text-gray-600">
+                    К преподаванию в проектных группах привлечены магистранты, аспиранты и выпускники ИМИ (в том числе – выпускники магистратуры). Формат «равный — равному» повышает вовлеченность в технически сложные темы.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-8 border-t-4 border-brand-primary">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-brand-primary bg-opacity-20 rounded-full flex items-center justify-center text-brand-primary text-xl mr-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark">Олимпиада "Ордината"</h3>
+                </div>
+                <p class="text-gray-600">
+                    Новый инструмент формирования независимого пула абитуриентов. Олимпиада позволяет выявлять мотивированных школьников, не охваченных стандартными программами.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm">© 2026 Институт математики и информатики МПГУ. Отчет по профориентации.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA PREPARATION ---
+        
+        const topEventsData = {
+            labels: ['Городская мат. олимпиада', 'Фестиваль ИМИ', 'День открытых дверей', 'Старт проектного сезона', 'Олимпиада "Педагогическое будущее"'],
+            data: [150, 100, 80, 80, 50]
+        };
+
+        const activityTypeData = {
+            labels: ['Образовательные курсы (серии)', 'Олимпиады и соревнования', 'Массовые мероприятия', 'Мастер-классы и интенсивы'],
+            data: [8, 5, 4, 2]
+        };
+
+        // NEW DATA for Analytics Dashboard
+        const dynamicsData = {
+            labels: ['Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            data: [130, 140, 190, 170] // Estimated from event sums
+        };
+
+        const audienceData = {
+            labels: ['7-9 классы (ИТ-вертикаль)', '10-11 классы (ИТ-классы)'],
+            data: [60, 40] // Percentage breakdown
+        };
+
+        const responsibleData = {
+            labels: ['Студенты и магистранты '],
+            data: [7, 4, 3, 2, 2] // Estimated event count involvement
+        };
+
+        // --- UTILITY FUNCTIONS ---
+        function wrapLabels(labels) {
+            return labels.map(label => {
+                if (label.length <= 16) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + ' ' + words[i]).length <= 16) {
+                        currentLine += ' ' + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            });
+        }
+
+        // --- CHART CONFIGURATION ---
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) return label.join(' ');
+                            return label;
+                        }
+                    },
+                    backgroundColor: 'rgba(30, 58, 138, 0.9)',
+                    titleFont: { family: 'Inter', size: 14 },
+                    bodyFont: { family: 'Inter', size: 13 },
+                    padding: 10,
+                    cornerRadius: 8,
+                },
+                legend: {
+                    labels: { font: { family: 'Inter', size: 12 }, color: '#374151' }
+                }
+            }
+        };
+
+        // --- RENDER CHARTS ---
+
+        // 1. Top Events
+        new Chart(document.getElementById('topEventsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: wrapLabels(topEventsData.labels),
+                datasets: [{
+                    label: 'Участники',
+                    data: topEventsData.data,
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 6,
+                    hoverBackgroundColor: '#f97316'
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { beginAtZero: true, grid: { color: '#e5e7eb' } }, x: { grid: { display: false } } } }
+        });
+
+        // 2. Activity Type
+        new Chart(document.getElementById('activityTypeChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: wrapLabels(activityTypeData.labels),
+                datasets: [{
+                    data: activityTypeData.data,
+                    backgroundColor: ['#1e3a8a', '#3b82f6', '#14b8a6', '#f97316'],
+                    borderWidth: 0, hoverOffset: 4
+                }]
+            },
+            options: { ...commonOptions, cutout: '60%', plugins: { ...commonOptions.plugins, legend: { position: 'bottom' } } }
+        });
+
+        // 3. Dynamics Chart (Line)
+        new Chart(document.getElementById('dynamicsChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: dynamicsData.labels,
+                datasets: [{
+                    label: 'Охват обучающихся',
+                    data: dynamicsData.data,
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#1e3a8a'
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { beginAtZero: true } } }
+        });
+
+        // 4. Audience Chart (Pie)
+        new Chart(document.getElementById('audienceChart').getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: wrapLabels(audienceData.labels),
+                datasets: [{
+                    data: audienceData.data,
+                    backgroundColor: ['#3b82f6', '#14b8a6'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: { ...commonOptions, plugins: { ...commonOptions.plugins, legend: { position: 'bottom' } } }
+        });
+
+        // 5. Responsible Dashboard (Horizontal Bar)
+        new Chart(document.getElementById('responsibleChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: wrapLabels(responsibleData.labels),
+                datasets: [{
+                    label: 'Количество организованных треков/мероприятий',
+                    data: responsibleData.data,
+                    backgroundColor: [
+                        '#f97316', // Students (Leader)
+                        '#1e3a8a', 
+                        '#3b82f6', 
+                        '#14b8a6', 
+                        '#9ca3af'
+                    ],
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal
+                ...commonOptions,
+                scales: {
+                    x: { beginAtZero: true, grid: { color: '#e5e7eb' } },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
