@@ -352,6 +352,88 @@
 
     <!-- FOOTER -->
     <footer class="bg-gray-800 text-white py-8 mt-12">
+        <!-- SECTION: LINKS LIST (Секция со списком ссылок) -->
+        <section class="bg-white rounded-xl shadow-md p-8 mt-12">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6 border-b-2 border-brand-accent inline-block pb-1">
+                Информационное освещение (Ссылки на мероприятия)
+            </h2>
+            <p class="text-sm text-gray-500 mb-4">
+                Полный перечень новостей, опубликованных на портале МПГУ за отчетный период.
+            </p>
+            
+            <!-- Контейнер со скроллом, чтобы список не занимал весь экран -->
+            <div class="h-80 overflow-y-auto pr-4 border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <ul id="news-links-list" class="space-y-2">
+                    <!-- Сюда будут добавляться ссылки через JavaScript -->
+                </ul>
+            </div>
+        </section>
+
+        <script>
+            // --- БЛОК ДЛЯ ВСТАВКИ ССЫЛОК ---
+            // Просто добавляйте новые ссылки в кавычках через запятую внутри квадратных скобок
+            const reportLinks = [
+                "https://mpgu.su/novosti/biblioteka-pervokursnikov-informatiki/",
+                "https://mpgu.su/bez-rubriki/sostojalas-uchebnom-pedagogicheskogo/",
+                "https://mpgu.su/bez-rubriki/pervokursnikam-vneuchebnoj-zhizni/",
+                "https://mpgu.su/novosti/pervokursnikam-matematike-professii/",
+                "https://mpgu.su/novosti/razrabotke-shkolnikov-razrabotchikom/",
+                "https://mpgu.su/novosti/studenty-zasedanii-pedagogicheskij/",
+                "https://mpgu.su/novosti/startovali-programmy-dejatelnosti-shkolnikov/",
+                "https://mpgu.su/novosti/vozobnovilsja-razrabotke-prilozhenij/",
+                "https://mpgu.su/bez-rubriki/startoval-razrabotke-shkolnikov/",
+                "https://mpgu.su/bez-rubriki/sozdaniju-botov-vozobnovljaetsja/",
+                "https://mpgu.su/novosti/proshjol-shahmatnyj-shkolnikov/",
+                "https://mpgu.su/bez-rubriki/vstretilis-obrazovatelnoj-konstruktor/",
+                "https://mpgu.su/novosti/festivale-instituta-matematiki-informatiki/",
+                "https://mpgu.su/bez-rubriki/startovala-programma-shkolnikov/",
+                "https://mpgu.su/bez-rubriki/otkryli-gejmdeva-shkolnikov/",
+                "https://mpgu.su/novosti/matematika-shkolnikam-discipliny/",
+                "https://mpgu.su/bez-rubriki/iskusstvo-matematicheskij-skretching/",
+                "https://mpgu.su/novosti/startovala-dejatelnost-iskusstvennyj/",
+                "https://mpgu.su/novosti/magistranty-stolichnyh-programmirovaniju/",
+                "https://mpgu.su/novosti/provedenija-sorevnovanija-programmirovaniju/",
+                "https://mpgu.su/bez-rubriki/matematiki-informatiki-informaticheskaja/",
+                "https://mpgu.su/novosti/prepodavateli-predstavili-universitete/",
+                "https://mpgu.su/bez-rubriki/intellektualnye-batalii-pervyj/",
+                "https://mpgu.su/novosti/matematika-iskusstvo-proshel/",
+                "https://mpgu.su/novosti/oficialnogo-gorodskogo-matematicheskaja/",
+                "https://mpgu.su/bez-rubriki/sotrudnichestvo-matematicheskoj-vertikalju/",
+                "https://mpgu.su/bez-rubriki/predstaviteljami-zanimajushhihsja-obrazovatelnoj/",
+                "https://mpgu.su/bez-rubriki/shahmatnyj-organizovannyj-galaktika/",
+                "https://mpgu.su/bez-rubriki/shkolnikov-institute-matematiki-informatiki/",
+                "https://mpgu.su/bez-rubriki/pilotnogo-specializirovannogo-obrazovanija/",
+                "https://mpgu.su/bez-rubriki/uchebnom-otkrytyh-institute-matematiki-informatiki/",
+                "https://mpgu.su/bez-rubriki/den-matematika-v-imi/",
+                "https://mpgu.su/bez-rubriki/informatiki-institute-matematiki/",
+                "https://mpgu.su/novosti/rezultaty-otborochnogo-shkolnikov/",
+                "https://mpgu.su/bez-rubriki/universitetskoj-informatiki-uchashhihsja/",
+                "https://mpgu.su/novosti/gorodskoj-matematicheskoj-olimpiady/",
+                "https://mpgu.su/bez-rubriki/proektnaja-konferencija-tehnologij/",
+                "https://mpgu.su/bez-rubriki/prepodavateli-provedenii-olimpiady-pedagogicheskoe/",
+                "https://mpgu.su/bez-rubriki/studenty-shkolnikov-pedagogicheskoj/",
+                "https://mpgu.su/bez-rubriki/gorodskoj-matematicheskaja-geometrii/",
+                "https://mpgu.su/bez-rubriki/vozobnovilis-uchashhihsja-matematicheskaja/",
+                "https://mpgu.su/novosti/praktikum-uchastnikov-matematicheskoj/",
+                "https://mpgu.su/bez-rubriki/uchashhiesja-gotovjatsja-konferencii/"
+            ];
+            // --- КОНЕЦ БЛОКА ССЫЛОК ---
+
+            // Функция отрисовки списка
+            const listContainer = document.getElementById('news-links-list');
+            reportLinks.forEach((link, index) => {
+                const li = document.createElement('li');
+                li.className = "flex items-start text-sm";
+                // Создаем красивую ссылку с иконкой
+                li.innerHTML = `
+                    <i class="fa-solid fa-link text-brand-primary mt-1 mr-2 text-xs"></i>
+                    <a href="${link}" target="_blank" class="text-gray-700 hover:text-brand-accent hover:underline break-all transition-colors duration-200">
+                        ${link}
+                    </a>
+                `;
+                listContainer.appendChild(li);
+            });
+        </script>
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-gray-400 text-sm">© 2026 Институт математики и информатики МПГУ. Отчет по профориентации.</p>
         </div>
