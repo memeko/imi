@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#25599b">
+  <meta name="description" content="Интерактивная карта возможностей для первокурсников Института математики и информатики МПГУ.">
+  <title>Погружение в ИМИ — карта первокурсника</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2325599b'/%3E%3Cpath d='M13 22 24 9l7 13h2L42 9l9 13-5 23c-7 9-21 9-28 0z' fill='%23f47b35'/%3E%3Cpath d='M21 37c7 5 15 5 22 0-2 12-20 12-22 0' fill='white'/%3E%3Ccircle cx='25' cy='31' r='2'/%3E%3Ccircle cx='39' cy='31' r='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#journey-map">К карте путешествия</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="В начало">
+      <span class="brand-mark" aria-hidden="true">ИМИ</span>
+      <span><b>Погружение</b><small>карта первокурсника</small></span>
+    </a>
+    <div class="route-status" aria-live="polite">
+      <span class="route-status__label">Исследовано</span>
+      <strong><span id="visited-count">0</span>/7</strong>
+      <span class="route-status__bar"><i id="progress-bar"></i></span>
+    </div>
+    <button class="quiet-button" id="reset-route" type="button">Начать заново</button>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Институт математики и информатики МПГУ</p>
+        <h1 id="hero-title">Моё путешествие с ИМИ!</h1>
+        <p class="hero-lead">Направление обучения – это не одна профессия и не один скучный сценарий, ты сам можешь создать свой уникальный профиль специалиста. Выбирай станции, знакомься с направлениями и собирай собственную комбинацию: математика, технологии, педагогика, наука, медиа и студенческие проекты.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#journey-map">В путь <span aria-hidden="true">→</span></a>
+          <button class="text-button" type="button" data-open="how">Как устроена карта?</button>
+        </div>
+      </div>
+      <aside class="welcome-note">
+        <span class="fox-peek" aria-hidden="true">🦊</span>
+        <p><strong>Подсказка от лиса:</strong> нажимай на круглые метки. Посещённые станции сохранятся на этом устройстве.</p>
+      </aside>
+    </section>
+
+    <section class="map-section" id="journey-map" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Маршрут без единственно правильного порядка</p>
+          <h2 id="map-title">Куда отправимся?</h2>
+        </div>
+        <p>Семь точек — от знакомства с институтом до истории, в которой решения принимаешь ты.</p>
+      </div>
+
+      <div class="map-frame" aria-label="Интерактивная карта возможностей ИМИ">
+        <img class="map-art" src="assets/campus-map.svg" alt="Иллюстрированная карта студенческого городка с лисятами">
+        <svg class="route-line" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M92 548 C158 513 178 438 250 405 S380 533 446 505 S516 355 590 338 S659 474 734 445 S773 300 846 265 S865 150 840 100"/>
+        </svg>
+
+        <button class="station station--1" type="button" data-station="start" style="--x:9%;--y:83%">
+          <span class="station__pin"><b>1</b><i aria-hidden="true">🏛️</i></span><span class="station__label">Знакомство с ИМИ</span>
+        </button>
+        <button class="station station--2" type="button" data-station="paths" style="--x:25%;--y:61%">
+          <span class="station__pin"><b>2</b><i aria-hidden="true">🧭</i></span><span class="station__label">Траектории обучения</span>
+        </button>
+        <button class="station station--3" type="button" data-station="lab" style="--x:44%;--y:77%">
+          <span class="station__pin"><b>3</b><i aria-hidden="true">🤖</i></span><span class="station__label">Лаборатория технологий</span>
+        </button>
+        <button class="station station--4" type="button" data-station="clubs" style="--x:59%;--y:51%">
+          <span class="station__pin"><b>4</b><i aria-hidden="true">🎭</i></span><span class="station__label">Клубы и творчество</span>
+        </button>
+        <button class="station station--5" type="button" data-station="science" style="--x:73%;--y:69%">
+          <span class="station__pin"><b>5</b><i aria-hidden="true">🔭</i></span><span class="station__label">Наука и конкурсы</span>
+        </button>
+        <button class="station station--6" type="button" data-station="council" style="--x:86%;--y:40%">
+          <span class="station__pin"><b>6</b><i aria-hidden="true">🤝</i></span><span class="station__label">Студенческий совет</span>
+        </button>
+        <button class="station station--7 station--final" type="button" data-station="novel" style="--x:84%;--y:15%">
+          <span class="station__pin"><b>7</b><i aria-hidden="true">✨</i></span><span class="station__label">Визуальная новелла</span>
+        </button>
+      </div>
+
+      <details class="route-list">
+        <summary>Открыть маршрут списком</summary>
+        <div class="route-list__grid">
+          <button type="button" data-station="start">1. Знакомство с ИМИ</button>
+          <button type="button" data-station="paths">2. Траектории обучения</button>
+          <button type="button" data-station="lab">3. Лаборатория технологий</button>
+          <button type="button" data-station="clubs">4. Клубы и творчество</button>
+          <button type="button" data-station="science">5. Наука и конкурсы</button>
+          <button type="button" data-station="council">6. Студенческий совет</button>
+          <button type="button" data-station="novel">7. Визуальная новелла</button>
+        </div>
+      </details>
+    </section>
+
+    <section class="career-section" aria-labelledby="career-title">
+      <div class="career-intro">
+        <p class="eyebrow">Диплом — фундамент, навыки — конструктор</p>
+        <p class="career-statement" id="career-title">«Педагогическое образование» не значит «только учитель»</p>
+        <p>Педагогическая подготовка учит объяснять сложное, проектировать обучение, работать с людьми и данными. В сочетании с математикой, программированием и выбранными активностями она открывает гораздо более широкий спектр ролей.</p>
+      </div>
+      <div class="career-grid">
+        <article><span>01</span><h3>Образование и EdTech</h3><p>Учитель, методист, тьютор, разработчик образовательных продуктов и цифровых курсов.</p></article>
+        <article><span>02</span><h3>Аналитика и наука</h3><p>Аналитик данных, исследователь, специалист по статистике и образовательной аналитике.</p></article>
+        <article><span>03</span><h3>Технологии</h3><p>Разработчик, специалист по ИИ, робототехнике, 3D-моделированию и цифровым лабораториям.</p></article>
+        <article><span>04</span><h3>Медиа и проекты</h3><p>Медиапедагог, автор научпопа, контент-разработчик, организатор мероприятий и команд.</p></article>
+      </div>
+    </section>
+
+    <section class="novel-section" id="visual-novel" aria-labelledby="novel-title">
+      <div class="novel-copy">
+        <p class="eyebrow">Финальная станция</p>
+        <h2 id="novel-title">Первый курс: история начинается</h2>
+        <p>Познакомься с героями-первокурсниками и посмотри на студенческую жизнь изнутри. Новелла открывается прямо на странице; если браузер ограничит встроенный режим, её можно запустить в новой вкладке.</p>
+        <a class="primary-button primary-button--light" href="https://memeko.github.io/inf-met-novel-pages/" target="_blank" rel="noopener">Открыть отдельно <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="novel-browser">
+        <div class="novel-browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>история первокурсников</span></div>
+        <iframe src="https://memeko.github.io/inf-met-novel-pages/" title="Визуальная новелла о первокурсниках ИМИ" loading="lazy" allow="fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+
+    <section class="finish-section">
+      <span class="finish-fox" aria-hidden="true">🦊</span>
+      <div>
+        <p class="eyebrow">Не нужно выбирать себя раз и навсегда</p>
+        <h2>Твой маршрут можно пересобирать</h2>
+        <p>Пробуй факультативы, клубы, лаборатории, конкурсы и роли в студенческих проектах. Так направление подготовки превращается в личную профессиональную траекторию.</p>
+      </div>
+      <a class="outline-button" href="#journey-map">Вернуться к карте ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Институт математики и информатики МПГУ · Погружение для первокурсников</p>
+    <p>Материалы о направлениях ведут на официальный портал МПГУ.</p>
+  </footer>
+
+  <dialog class="station-dialog" id="station-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Закрыть окно">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <template id="content-how">
+    <div class="dialog-kicker">Как пройти погружение</div>
+    <h2 id="dialog-title">Карта устроена как свободное путешествие</h2>
+    <p>Нажимай на станции в любом порядке. Внутри — короткая справка, идеи для развития и ссылки на программы обучения. После посещения метка получит галочку, а счётчик вверху обновится.</p>
+    <div class="tip-box"><b>Важно:</b> это не тест и не обещание одной карьеры. Задача карты — показать, из каких блоков можно собрать собственный путь.</div>
+  </template>
+
+  <template id="content-start">
+    <div class="dialog-kicker">Станция 1 · точка старта</div>
+    <h2 id="dialog-title">Институт математики и информатики</h2>
+    <p>ИМИ вырос из Математического факультета, основанного в 1900 году. Здесь работают учёные, авторы школьных и вузовских учебников и преподаватели-практики.</p>
+    <p>Среди выпускников — исследователи, преподаватели вузов, директора школ, специалисты сферы образования и технологий. Институт сотрудничает с зарубежными университетами и соединяет фундаментальную подготовку с проектной работой.</p>
+    <div class="tip-box"><b>Первая мысль маршрута:</b> ты поступил не в одну профессию, а в среду, где можно пробовать разные роли.</div>
+  </template>
+
+  <template id="content-paths">
+    <div class="dialog-kicker">Станция 2 · учебные траектории</div>
+    <h2 id="dialog-title">Пять программ — множество комбинаций</h2>
+    <p>Открой карточку программы на портале МПГУ и посмотри учебный план. Название профиля задаёт основу, а факультативы, практика и проекты помогают сделать её своей.</p>
+    <div class="program-list">
+      <a href="https://mpgu.su/ob-mpgu/struktura/faculties/matematicheskiy-fakultet/bakalavriat/01-03-01-matematika-profil-prepodavanie-matematiki-bvo-2024/" target="_blank" rel="noopener"><b>01.03.01 Математика</b><span>Преподавание математики · аналитика, исследования, данные, образование</span></a>
+      <a href="https://mpgu.su/ob-mpgu/struktura/faculties/matematicheskiy-fakultet/bakalavriat/44-03-01-pedagogicheskoe-obrazovanie-s-dvumja-profiljami-podgotovki-profili-matematika-i-jekonomika-bvo-2024/" target="_blank" rel="noopener"><b>44.03.01 Математика и экономика</b><span>Экономика, аналитика, финансовая грамотность, преподавание</span></a>
+      <a href="https://mpgu.su/ob-mpgu/struktura/faculties/matematicheskiy-fakultet/bakalavriat/44-03-01-pedagogicheskoe-obrazovanie-s-dvumja-profiljami-podgotovki-profili-matematika-i-informatika-bvo-2024/" target="_blank" rel="noopener"><b>44.03.01 Информатика и математика</b><span>Программирование, цифровые системы, данные, преподавание</span></a>
+      <a href="https://mpgu.su/ob-mpgu/struktura/faculties/matematicheskiy-fakultet/bakalavriat/pedagogicheskoe-obrazovanie-kompjuternye/" target="_blank" rel="noopener"><b>44.03.01 Математика и компьютерные науки</b><span>Разработка, ИИ, исследовательские и инженерные проекты</span></a>
+      <a href="https://mpgu.su/ob-mpgu/struktura/faculties/matematicheskiy-fakultet/bakalavriat/pedagogicheskoe-obrazovanie-mediaobrazovanie/" target="_blank" rel="noopener"><b>44.03.01 Математика, информатика и медиаобразование</b><span>Цифровой контент, медиа, EdTech, обучение и коммуникации</span></a>
+    </div>
+  </template>
+
+  <template id="content-lab">
+    <div class="dialog-kicker">Станция 3 · технологии</div>
+    <h2 id="dialog-title">Лаборатория робототехники и ИИ</h2>
+    <p>Здесь можно заниматься 3D-моделированием, микроэлектроникой и робототехникой, участвовать в разработке проектов и осваивать технологии руками, а не только по конспекту.</p>
+    <p>Если хочешь к нам, обратись в педагогический кружок или к Павлову Дмитрию Игоревичу или Салахова Алёне Антоновне из кафедры ТМОМИ.</p>
+    <ul class="skill-tags"><li>3D-моделирование</li><li>микроэлектроника</li><li>робототехника</li><li>искусственный интеллект</li><li>командные проекты</li></ul>
+    <div class="tip-box"><b>Что добавляется к диплому:</b> инженерное мышление, прототипирование и портфолио проектов.</div>
+  </template>
+
+  <template id="content-clubs">
+    <div class="dialog-kicker">Станция 4 · вне расписания</div>
+    <h2 id="dialog-title">Клубы, сцена и собственные идеи</h2>
+    <p>Педагогические клубы развивают профессиональные компетенции через практику и мастер-классы. Творческие объединения позволяют попробовать себя в КВН, студенческом театре и других культурных проектах.</p>
+    <p>В университете работает киберспортивный и аниме клубы. В институте есть даже клуб японского языка! А еще мы приглашаем тебя участвовать в олимпиадах и конкурсах или даже написать свою книгу.</p>
+    <figure class="dialog-media dialog-media--books">
+      <img src="assets/student-books.svg" alt="Книги по программированию, написанные студентами ИМИ МПГУ">
+      <figcaption>Книги студентов ИМИ были представлены на крупных международных книжных выставках.</figcaption>
+    </figure>
+    <div class="tip-box"><b>Невидимый результат:</b> командная работа, публичное выступление, лидерство и способность доводить идею до события.</div>
+  </template>
+
+  <template id="content-science">
+    <div class="dialog-kicker">Станция 5 · исследование</div>
+    <h2 id="dialog-title">Научная жизнь и конкурсы</h2>
+    <p>Студенты могут участвовать в олимпиадах по программированию, научных сессиях, семинарах, «Науке 0+», ежегодной «Научной весне», педагогических и проектных конкурсах.</p>
+    <div class="named-opportunities" aria-label="Конкурсы для студентов">
+      <h3>Попробуй свои силы</h3>
+      <ul>
+        <li>Межвузовский студенческий конкурс «Педагогический дебют»</li>
+        <li>Межрегиональная олимпиада «Педагогическое будущее России»</li>
+        <li>Конкурс для ПППК «Проект по педагогике»</li>
+        <li>Творческий конкурс «Выбери свой путь»</li>
+      </ul>
+    </div>
+    <ul class="check-list"><li>представить своё исследование;</li><li>получить обратную связь от экспертов;</li><li>найти тему курсовой или будущего проекта;</li><li>собрать первые публикации и выступления в портфолио.</li></ul>
+    <div class="school-program">
+      <span class="school-program__icon" aria-hidden="true">🏫</span>
+      <div><h3>«Приведи МПГУ в свою школу»</h3><p>Расскажи о МПГУ в своей школе и помоги старшеклассникам познакомиться с университетом. Можно провести квест-игру «МПГУ», экскурсию «Один день в МПГУ», квиз-игру «Новые знания с новым предметом» или встречу «7 шагов к профессии мечты».</p></div>
+    </div>
+    <div class="tip-box"><b>Можно начать с малого:</b> прийти слушателем, задать один вопрос, а в следующий раз — принести собственную работу.</div>
+  </template>
+
+  <template id="content-council">
+    <div class="dialog-kicker">Станция 6 · люди рядом</div>
+    <h2 id="dialog-title">Студенческий совет</h2>
+    <p>Студсовет помогает первокурсникам ориентироваться в новостях, мероприятиях и повседневной жизни института. Здесь можно спросить совета у старших товарищей, предложить инициативу или присоединиться к организации событий.</p>
+    <p>Это площадка общения студентов разных курсов — и хороший способ быстрее почувствовать себя частью института.</p>
+    <figure class="council-qr">
+      <img src="assets/student-council-qr.svg" alt="QR-код группы студенческого совета ИМИ">
+      <figcaption><b>Студсовет ИМИ</b><span>Отсканируй QR-код, чтобы вступить в группу.</span></figcaption>
+    </figure>
+    <div class="tip-box"><b>Если потерялся:</b> это нормальная часть первого курса. Начни с куратора группы или студсовета — в одиночку разгадывать весь университетский лор не требуется.</div>
+  </template>
+
+  <template id="content-novel">
+    <div class="dialog-kicker">Станция 7 · интерактивная история</div>
+    <h2 id="dialog-title">Познакомься с первокурсниками</h2>
+    <p>Визуальная новелла показывает первые дни в институте через историю героев и их выборы. Она встроена ниже — можно начать прямо сейчас.</p>
+    <button class="primary-button" type="button" data-scroll-novel>Перейти к новелле ↓</button>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
